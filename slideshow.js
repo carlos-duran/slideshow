@@ -118,9 +118,9 @@
     }
 
     play () {
+      this.paused = false
       if (this.loop) return
       var interval = 50
-      this.paused = false
       this.loop = setInterval(() => {
         if (this.paused) return
         if (this.pauseOnHover && this.isHover) return
