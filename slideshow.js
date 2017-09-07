@@ -118,6 +118,7 @@
     }
 
     play () {
+      if (this.loop) return
       var interval = 50
       this.paused = false
       this.loop = setInterval(() => {
