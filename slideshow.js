@@ -137,6 +137,7 @@
     stop () {
       this.timer = 0
       clearInterval(this.loop)
+      this.loop = null
       if (this.percentaje) this.percentaje()
     }
 
