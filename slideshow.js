@@ -131,7 +131,7 @@
     }
 
     pause () {
-      this.paused = !this.paused
+      this.paused = true
     }
 
     stop () {
