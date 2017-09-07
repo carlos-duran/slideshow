@@ -1,0 +1,16 @@
+.slideshow {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.slideshow > :not(.active) {
+  display: none;
+}
+
+.slideshow .sliding {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
