@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="slideshow.css">
-    <script src="slideshow.min.js"></script>
+    <script src="slideshow.js"></script>
   </head>
   <body>
     <div class="container">
@@ -54,7 +54,7 @@
       var slideshow = new Slideshow({
         el: '#demo',
         auto: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
         interval: 5000,
         duration: 800,
         animations: [
@@ -70,7 +70,7 @@
         onchange () {
           pos.innerText = (this.active + 1) + ' / ' + this.items.length
         },
-        percentaje () {
+        percentage () {
           eltimer.innerText = (this.interval - this.timer) + ' ms'
           var rate = (this.timer * 100.0 / this.interval).toFixed(0) + '%'
           per2.innerText = rate
