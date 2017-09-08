@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="slideshow.css">
-    <script src="slideshow.js"></script>
+    <script src="slideshow.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -22,6 +22,7 @@
         <div class="animated"><img src="https://placeimg.com/600/300/people"></div>
         <div class="animated"><img src="https://placeimg.com/600/300/tech"></div>
       </div>
+      <div id="progress"><div></div></div>
       <p>
         <button onclick="slideshow.play()">Play</button>
         <button onclick="slideshow.pause()">Pause</button>
@@ -37,25 +38,29 @@
 
     <script>
       var pos = document.querySelector('#pos')
+      var progress = document.querySelector('#progress div')
 
       var slideshow = new Slideshow({
         el: '#demo',
         auto: true,
         pauseOnHover: false,
         interval: 5000,
-        duration: 800,
+        duration: 600,
         animations: [
-          'slideInLeft', 'slideInRight', 'slideInUp', 'slideInDown',
-          'bounceInLeft', 'bounceInRight', 'bounceInUp', 'bounceInDown',
-          'fadeInLeft', 'fadeInRight', 'fadeInUp', 'fadeInDown',
-          'zoomInLeft', 'zoomInRight', 'zoomInUp', 'zoomInDown',
-          'zoomIn', 'flipInX', 'flipInY', 'rotateIn', 'fadeIn'
+          // 'slideInLeft', 'slideInRight', 'slideInUp', 'slideInDown',
+          // 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'bounceInDown',
+          // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'fadeInDown',
+          // 'zoomInLeft', 'zoomInRight', 'zoomInUp', 'zoomInDown',
+          'fadeIn'//, 'zoomIn', 'flipInX', 'flipInY', 'rotateIn'
         ],
         // animationsOut: [
         //   'fadeOutLeft', 'bounceOutUp', 'slideOutDown', 'rotateOut', 'flipOutX'
         // ],
         onchange () {
           pos.innerText = (this.active + 1) + ' / ' + this.items.length
+        },
+        percentage () {
+          progress.style.width = (this.timer * 100.0 / this.interval).toFixed(0) + '%';
         }
       })
 

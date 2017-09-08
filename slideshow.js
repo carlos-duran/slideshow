@@ -150,7 +150,7 @@
     setEvents () {
       this.el.addEventListener('mouseover', setHover.bind(this))
       this.el.addEventListener('mouseout', unsetHover.bind(this))
-      swipedetect(this.el, dir => {
+      swipedetect.bind(this.el)(dir => {
         if(dir == 'left') this.next()
         if(dir == 'right') this.prev()
       })
@@ -170,21 +170,17 @@
     this.isHover = false
   }
 
-  window.Slideshow = Slideshow
+  function swipedetect(callback){
 
-
-  // credit: http://www.javascriptkit.com/javatutors/touchevents2.shtml
-  function swipedetect(el, callback){
-
-    var touchsurface = el,
+    var touchsurface = this,
     swipedir,
     startX,
     startY,
     distX,
     distY,
-    threshold = 80, //required min distance traveled to be considered swipe
-    restraint = 100, // maximum distance allowed at the same time in perpendicular direction
-    allowedTime = 300, // maximum time allowed to travel that distance
+    threshold = 80,
+    restraint = 100,
+    allowedTime = 300,
     elapsedTime,
     startTime,
     handleswipe = callback || function(swipedir){}
@@ -192,10 +188,9 @@
     touchsurface.addEventListener('touchstart', function(e){
       var touchobj = e.changedTouches[0]
       swipedir = 'none'
-      dist = 0
       startX = touchobj.pageX
       startY = touchobj.pageY
-      startTime = new Date().getTime() // record time when finger first makes contact with surface
+      startTime = new Date().getTime()
       // e.preventDefault()
     }, false)
 
@@ -205,20 +200,23 @@
 
     touchsurface.addEventListener('touchend', function(e){
       var touchobj = e.changedTouches[0]
-      distX = touchobj.pageX - startX // get horizontal dist traveled by finger while in contact with surface
-      distY = touchobj.pageY - startY // get vertical dist traveled by finger while in contact with surface
-      elapsedTime = new Date().getTime() - startTime // get time elapsed
-      if (elapsedTime <= allowedTime){ // first condition for awipe met
-        if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){ // 2nd condition for horizontal swipe met
-          swipedir = (distX < 0)? 'left' : 'right' // if dist traveled is negative, it indicates left swipe
+      distX = touchobj.pageX - startX
+      distY = touchobj.pageY - startY
+      elapsedTime = new Date().getTime() - startTime
+      if (elapsedTime <= allowedTime){
+        if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){
+          swipedir = (distX < 0)? 'left' : 'right'
         }
-        else if (Math.abs(distY) >= threshold && Math.abs(distX) <= restraint){ // 2nd condition for vertical swipe met
-          swipedir = (distY < 0)? 'up' : 'down' // if dist traveled is negative, it indicates up swipe
+        else if (Math.abs(distY) >= threshold && Math.abs(distX) <= restraint){
+          swipedir = (distY < 0)? 'up' : 'down'
         }
       }
       handleswipe(swipedir)
       // e.preventDefault()
     }, false)
   }
+
+  window.Slideshow = Slideshow
+
 
 })()
