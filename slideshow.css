@@ -1,7 +1,6 @@
 .slideshow {
   position: relative;
   overflow: hidden;
-  display: inline-block;
 }
 
 .slideshow > :not(.active) {

@@ -69,6 +69,7 @@
     show (index) {
       if (index > -1 && index < this.items.length && index !== this.active && !this.sliding) {
         this.timer = 0
+        if (this.percentage) this.percentage()
 
         this.items.forEach((item, i) => {
           item.style.display = i !== this.active ? 'none' : 'block'
@@ -92,7 +93,9 @@
 
           setTimeout(() => {
             this.items[this.active].style.display = 'none'
+            this.items[this.active].classList.remove('active')
             this.items[index].classList.remove('sliding', this.animations[rand])
+            this.items[index].classList.add('active')
             this.active = index
             this.sliding = false
           }, this.duration)
@@ -100,6 +103,7 @@
         } else {
           this.items[this.active].style.display = 'none'
           this.active = index
+          this.items[index].classList.add('active')
           this.items[this.active].style.display = 'block'
         }
 
@@ -115,7 +119,7 @@
     prev () {
       var index = this.active - 1
       if (index < 0) index = this.items.length - 1
-      this.show(index, true)
+      this.show(index)
     }
 
     play () {

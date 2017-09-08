@@ -16,18 +16,12 @@
       <hr>
       <p id="pos"></p>
       <div id="demo" class="slideshow">
-        <div class="animated"><img src="https://placeimg.com/600/300/animals?1"></div>
-        <div class="animated"><img src="https://placeimg.com/600/300/animals?2"></div>
-        <div class="animated active"><img src="https://placeimg.com/600/300/animals?3"></div>
-        <div class="animated"><img src="https://placeimg.com/600/300/animals?4"></div>
-        <div class="animated"><img src="https://placeimg.com/600/300/animals?5"></div>
-        <div class="animated"><img src="https://placeimg.com/600/300/animals?6"></div>
+        <div class="animated"><img src="https://placeimg.com/600/300/animals"></div>
+        <div class="animated"><img src="https://placeimg.com/600/300/arch"></div>
+        <div class="animated active"><img src="https://placeimg.com/600/300/nature"></div>
+        <div class="animated"><img src="https://placeimg.com/600/300/people"></div>
+        <div class="animated"><img src="https://placeimg.com/600/300/tech"></div>
       </div>
-      <p>
-        <div id="per">
-          <div id="per2"></div>
-        </div>
-      </p>
       <p>
         <button onclick="slideshow.play()">Play</button>
         <button onclick="slideshow.pause()">Pause</button>
@@ -37,19 +31,12 @@
         <button onclick="slideshow.prev()">Prev</button>
         <button onclick="slideshow.next()">Next</button>
       </p>
-      <p>
-        <span id="timer"></span>
-      </p>
-      <br><br><br><br>
       <hr>
       <p>&copy; Carlos Duran</p>
     </div>
 
     <script>
-      var eltimer = document.querySelector('#timer')
       var pos = document.querySelector('#pos')
-      var per = document.querySelector('#per')
-      var per2 = document.querySelector('#per2')
 
       var slideshow = new Slideshow({
         el: '#demo',
@@ -64,17 +51,11 @@
           'zoomInLeft', 'zoomInRight', 'zoomInUp', 'zoomInDown',
           'zoomIn', 'flipInX', 'flipInY', 'rotateIn', 'fadeIn'
         ],
-        animationsOut: [
-          'fadeOutLeft', 'bounceOutUp', 'slideOutDown', 'rotateOut', 'flipOutX'
-        ],
+        // animationsOut: [
+        //   'fadeOutLeft', 'bounceOutUp', 'slideOutDown', 'rotateOut', 'flipOutX'
+        // ],
         onchange () {
           pos.innerText = (this.active + 1) + ' / ' + this.items.length
-        },
-        percentage () {
-          eltimer.innerText = (this.interval - this.timer) + ' ms'
-          var rate = (this.timer * 100.0 / this.interval).toFixed(0) + '%'
-          per2.innerText = rate
-          per.style.width = rate
         }
       })
 

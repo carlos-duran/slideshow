@@ -21,26 +21,13 @@ body {
 
 .container {
   width: 1000px;
-  padding: 2rem;
+  padding: 1rem;
   background: white;
   text-align: center;
 }
 
-.animated {
-  transition: all .5s;
-}
-.animated:hover {
-  transform: scale(1.1);
-}
-
-#per {
-  transition: all .05s;
-  width: 0%;
-  padding: 2px;
-  background: lightblue;
-  font-size: 12px;
-}
-
 #demo {
-  border-radius: 5px;
+  background: #ccc;
+  max-width: 600px;
+  margin: 0 auto;
 }
