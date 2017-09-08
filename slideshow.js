@@ -98,6 +98,7 @@
             this.items[index].classList.add('active')
             this.active = index
             this.sliding = false
+            if(this.onchange) this.onchange()
           }, this.duration)
 
         } else {
@@ -105,9 +106,9 @@
           this.active = index
           this.items[index].classList.add('active')
           this.items[this.active].style.display = 'block'
+          if(this.onchange) this.onchange()
         }
 
-        if(this.onchange) this.onchange()
       }
     }
 
@@ -195,7 +196,7 @@
       startX = touchobj.pageX
       startY = touchobj.pageY
       startTime = new Date().getTime() // record time when finger first makes contact with surface
-      //e.preventDefault()
+      // e.preventDefault()
     }, false)
 
     // touchsurface.addEventListener('touchmove', function(e){
@@ -216,7 +217,7 @@
         }
       }
       handleswipe(swipedir)
-      //e.preventDefault()
+      // e.preventDefault()
     }, false)
   }
 
