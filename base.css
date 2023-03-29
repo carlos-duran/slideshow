@@ -22,11 +22,12 @@ body {
 .container {
   width: 1000px;
   padding: 1rem;
-  background: white;
+  background: #ffcccc;
   text-align: center;
 }
 
-#demo, #progress {
+#demo,
+#progress {
   background: #ccc;
   max-width: 600px;
   margin: 0 auto;
@@ -34,6 +35,6 @@ body {
 
 #progress div {
   width: 0%;
-  transition: all .05s;
+  transition: all 0.05s;
   border-bottom: 3px solid teal;
 }
