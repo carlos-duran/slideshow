@@ -36,5 +36,5 @@ body {
 #progress div {
   width: 0%;
   transition: all 0.05s;
-  border-bottom: 3px solid teal;
+  border-bottom: 3px solid #006f6f;
 }
